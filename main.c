@@ -5,7 +5,7 @@
 #include <assert.h>
 
 #define DATA_SIZE 1024;
-#define SOURCE_FILE "mandelbrot.b"
+#define SOURCE_FILE "bf.txt"
 
 
 typedef unsigned uint;
@@ -164,8 +164,6 @@ void execute(uchr **ptr, uint *pc, char *prog_source, uchr *mem, uint mem_size, 
 
 uint get_pos(uchr * memory, uchr * point)
 {
-//	printf("pointer: %p\n", point);
-//	printf("data: %p\n", memory);
 	return point - memory;
 }
 
@@ -178,7 +176,6 @@ int main(int argc, char* argv[]) {
 	uint i;
 	uint mem_size;
 	uchr *data, *p;
-	uchr *dat1, *dat2, *dat3, *dat4, *dat5, *dat6, *dat7, *dat8; // For testing
 	uint pc; // Program counter - index in file string.
 	mem_size = DATA_SIZE;
 	
@@ -202,53 +199,6 @@ int main(int argc, char* argv[]) {
 	 */
 	data = malloc(mem_size * sizeof (data)); // Allocate memory.
 	p = data; // Init. pointer to start of memory.
-	
-	/*
-	 * Test the operation functions.
-	 * The memory should be reset to zeros
-	 * and the pointer should be reset once
-	 * these tests have been run.
-	 */
-//	arrow(1, data, &p, mem_size); //         ">" - test
-//	arrow(-1, data, &p, mem_size); //        "<" - test
-//	add(1, p); //                           "+" - test
-//	add(-1, p); //                          "-" - test
-//	for (i = 0; i < 97; i++)
-//	{
-//		add(1, p);
-//	}
-//	output(p); //                           "." - test
-//	for (i = 97; i > 10; i--)
-//	{
-//		add(-1, p);
-//	}
-//	output(p);
-//	printf("value at %u is %hhu\n", get_pos(data, p), get_value(p));
-//	input(p); //                            "," - test
-//	output(p);
-	//
-	// Test end.
-	
-	// Reset memory and pointer.
-	//
-	free(data);
-	data = malloc(mem_size * sizeof (data)); // Allocate memory.
-	p = data; // Init. pointer to start of memory.
-	//
-	// Finished resetting memory variables after testing.
-	
-	// Test var setup.
-	//
-	dat1 = data + 0;
-	dat2 = data + 1;
-	dat3 = data + 2;
-	dat4 = data + 3;
-	dat5 = data + 4;
-	dat6 = data + 5;
-	dat7 = data + 6;
-	dat8 = data + 7;
-	//
-	// Test setup complete.
 	
 	// Execute the code from the file.
 	//
