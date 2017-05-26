@@ -4,7 +4,7 @@
 #include <malloc.h>
 #include <assert.h>
 
-#define DATA_SIZE 1024;
+#define DATA_SIZE 65536;
 #define SOURCE_FILE "bf.txt"
 
 
