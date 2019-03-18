@@ -5,7 +5,8 @@
 #include <assert.h>
 
 #define DATA_SIZE 65536;
-#define SOURCE_FILE "bf.txt"
+//#define SOURCE_FILE "bf.txt"
+#define SOURCE_FILE "mandelbrot.b"
 
 
 typedef unsigned uint;
@@ -17,7 +18,7 @@ void arrow(int dir, uchr * memory, uchr ** point, uint mem_size)
 	 * -1 -> left arrow  "<"
 	 * 1 --> right arrow ">"
 	 */
-	assert(dir == -1 || dir == 1);
+	assert(dir == -1 || dir == 1); /* FIXME: asserts should not be used except for testing. */
 	*point += dir;
 	// Wraparound if necessary.
 	if (*point < memory)
@@ -179,6 +180,7 @@ int main(int argc, char* argv[]) {
 	uint pc; // Program counter - index in file string.
 	mem_size = DATA_SIZE;
 	
+    /* TODO: move this to a function. */
 	// Load the program into memory.
 	//
 	FILE *f = fopen(SOURCE_FILE, "r");
