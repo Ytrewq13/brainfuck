@@ -18,7 +18,7 @@ void arrow(int dir, uchr * memory, uchr ** point, uint mem_size)
 	 * -1 -> left arrow  "<"
 	 * 1 --> right arrow ">"
 	 */
-	assert(dir == -1 || dir == 1); /* FIXME: asserts should not be used except for testing. */
+	assert(dir == -1 || dir == 1);
 	*point += dir;
 	// Wraparound if necessary.
 	if (*point < memory)
@@ -82,6 +82,7 @@ void bracket(int dir, uchr *ptr, uint *pc, uint match_indx)
 
 uint find_match(int dir, char *program, uint this_index, uint prog_len)
 {
+    /* TODO: Could this be done better recursively? */
 	assert((dir == -1 && this_index < prog_len-1) || (dir == 1 && this_index > 0));
 	uint i;
 	int layers = 0; // Ogres are like onions.
